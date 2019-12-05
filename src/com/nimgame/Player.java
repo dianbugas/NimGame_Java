@@ -8,18 +8,18 @@ public class Player
         Scanner in = new Scanner(System.in);
         Boolean success = false;
         int takeAmount = 0;
-        System.out.println("There are " + numMarbles + " marbles left.");
+        System.out.println("Ada " + numMarbles + " kelereng yang di hapus.");
 
         while (!success) {
             System.out.print("> ");
             takeAmount = in.nextInt();
             if (takeAmount <= 0) {
-                System.out.println("Nice try. Please enter an amount above zero.");
+                System.out.println("Usaha yang bagus. Silakan masukkan jumlah di atas nol.");
             } else if ((takeAmount > (numMarbles / 2)) && (numMarbles != 1)) {
-                System.out.println("There are only " + numMarbles + " marbles in the pile.");
-                System.out.println("You can only take up to half of the pile.");
+                System.out.println("Hannya ada " + numMarbles + " kelereng yang tersisa.");
+                System.out.println("Anda hanya dapat mengambil setengah tumpukan.");
             } else {
-                System.out.println("Okay, " + takeAmount + " marbles were taken from the pile.");
+                System.out.println("Okay, " + takeAmount + " kelereng diambil dari tumpukan.");
                 success = true;
             }
         }

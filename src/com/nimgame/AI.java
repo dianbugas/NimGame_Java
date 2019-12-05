@@ -34,7 +34,7 @@ public class AI
             takeAmount = generator.nextInt((numMarbles / 2) - 1) + 1;
         }
 
-        System.out.println("The computer took " + takeAmount + " marbles.");
+        System.out.println("Komputer Mengambil " + takeAmount + " kelereng.");
         return takeAmount;
     }
 }

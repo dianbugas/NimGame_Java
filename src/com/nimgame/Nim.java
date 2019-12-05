@@ -17,31 +17,27 @@ public class Nim
         Boolean smartComputer = true;
         Boolean twoPlayer = false;
 
-        System.out.println("Nim");
+        System.out.println("Selamat Datang di Permainan Game of Nim");
         System.out.println("---");
-        System.out.println("How many players:");
-        System.out.println("a). One Player against Smart Computer,");
-        System.out.println("b). One Player against Dumb Computer, or");
-        System.out.println("c). Two Players?");
+        System.out.println("Silahkan Pilih lawan yang ada inginkan a atau b:");
+        System.out.println("a). Bermain melawan Komputer Pintar!!!");
+        System.out.println("b). Bermain melawan Komputer Bodoh!!!");
         String choice = in.nextLine();
 
         if (choice.toLowerCase().equals("a")) {
-            System.out.println("Playing with a Smart Computer.");
+            System.out.println("\n" + "Bermain dengan Komputer Pintar.");
             smartComputer = true;
         } else if (choice.toLowerCase().equals("b")) {
-            System.out.println("Playing against a Dumb Computer.");
+            System.out.println("Bermain melawan Komputer Bodoh.");
             smartComputer = false;
-        } else if (choice.toLowerCase().equals("c")) {
-            numPlayers = 2;
-            System.out.println("Starting with two players.");
-            twoPlayer = true;
         } else {
-            System.out.println("Error - please enter a, b, or c.");
+            System.out.println("\n" +
+                    "Kesalahan - silakan masukkan a atau b");
             Nim.startGame();
         }
         
         int numMarbles = generator.nextInt(90) + 10;
-        System.out.println("Playing with " + numMarbles + " marbles.");
+        System.out.println("Bermain dengan " + numMarbles + " kelereng.");
 
         if (twoPlayer) {
             twoPlayerGame(numMarbles);
@@ -60,40 +56,40 @@ public class Nim
         Player playerTwo = new Player();
         Pile thePile = new Pile(marbles);
         if (generator.nextInt(2) == 1) {
-            System.out.println("Player one goes first.");
+            System.out.println("\n" + "Pemain satu lebih dulu.");
             playerOneGoesFirst = true;
         } else {
-            System.out.println("Player two goes first.");
+            System.out.println("Pemain dua masuk duluan.");
             playerOneGoesFirst = false;
         }
         while (thePile.getMarbles() != 0) {
             if (playerOneGoesFirst) {
                 playerOneWins = false;
-                System.out.println("Player One's Turn:");
+                System.out.println("Giliran Pemain Satu:");
                 thePile.removeMarbles(playerOne.promptPlayer(thePile.getMarbles()));
                 if (thePile.getMarbles() != 0) {
-                    System.out.println("Player Two's Turn:");
+                    System.out.println("Giliran Pemain Dua:");
                     thePile.removeMarbles(playerTwo.promptPlayer(thePile.getMarbles()));
                 } else {
                     playerOneWins = true;
                 }
             } else {
                 playerOneWins = true;
-                System.out.println("Player Two's Turn:");
+                System.out.println("Giliran Pemain Dua:");
                 thePile.removeMarbles(playerTwo.promptPlayer(thePile.getMarbles()));
                 if (thePile.getMarbles() != 0) {
-                    System.out.println("Player One's Turn:");
+                    System.out.println("Giliran Pemain Satu:");
                     thePile.removeMarbles(playerOne.promptPlayer(thePile.getMarbles()));
                 } else {
                     playerOneWins = false;
                 }
             }
         }
-        
+
         if (playerOneWins) {
-            System.out.println("Player One Wins!");
+            System.out.println("Pemain Satu Menang!");
         } else {
-            System.out.println("Player Two Wins!");
+            System.out.println("Pemain Dua Menang!");
         }
 
         gameOverPrompt();
@@ -110,10 +106,10 @@ public class Nim
         AI theComputer = new AI(smartComputer);
         
         if (generator.nextInt(2) == 1) {
-            System.out.println("Computer goes first.");
+            System.out.println("Komputer lebih dulu.");
             playerGoesFirst = false;
         } else {
-            System.out.println("You go first.");
+            System.out.println("Anda duluan.");
             playerGoesFirst = true;
         }
 
@@ -138,9 +134,11 @@ public class Nim
         }
 
         if (youWin) {
-            System.out.println("You won!");
+            System.out.println("\n" +
+                    "Kamu menang!");
         } else {
-            System.out.println("You lost.");
+            System.out.println("\n" +
+                    "Kamu kalah.");
         }
 
         gameOverPrompt();
@@ -149,16 +147,16 @@ public class Nim
     public static void gameOverPrompt()
     {
         Scanner in = new Scanner(System.in);
-        System.out.println("Play again? [Y/N]");
+        System.out.println("Main lagi? [Y/N]");
         String choice = in.nextLine();
 
         if (choice.toLowerCase().equals("y")) {
-            System.out.println("Restarting game...");
+            System.out.println("Mulai bermain lagi...");
             startGame();
         } else if (choice.toLowerCase().equals("n")) {
             System.out.println("Bye!");
         } else {
-            System.out.println("Invalid choice, please try again.");
+            System.out.println("Pilihan tidak valid, silakan coba lagi.");
             gameOverPrompt();
         }
     }
