@@ -1,17 +1,17 @@
 package com.Nimgame;
 
 public class Node {
-	int[] piles;
-	Node parentNode;
-	int heuristicValue;
+	int[] tumpukan;
+	Node simpulLama;
+	int nilai;
 	int atDepth;
-	String player;
+	String pemain;
 
 	public Node() {}
-	public Node(int[] piles, Node parentNode, int heuristicValue, int atDepth) {
-		this.piles = piles;
-		this.parentNode = parentNode;
-		this.heuristicValue = heuristicValue;
+	public Node(int[] tumpukan, Node parentNode, int heuristicValue, int atDepth) {
+		this.tumpukan = tumpukan;
+		this.simpulLama = parentNode;
+		this.nilai = heuristicValue;
 		this.atDepth = atDepth;
 	}
 	public Node(int[] piles) {
